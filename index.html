@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Adryan Julianto Panjaitan</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <h1>Adryan Portfolio</h1>
+            <ul>
+                <li><a href="#tentang">Tentang Saya</a></li>
+                <li><a href="#portofolio">Portofolio</a></li>
+                <li><a href="#layanan">Layanan</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section id="tentang">
+            <h2>Tentang Saya</h2>
+
+            <article>
+                <h3>Adryan Julianto Panjaitan</h3>
+                <p>
+                    Mahasiswa Sistem Informasi yang memiliki minat dalam
+                    pengembangan aplikasi, database, dan perancangan
+                    antarmuka pengguna.
+                </p>
+            </article>
+        </section>
+
+
+        <section id="keahlian">
+            <h2>Keahlian</h2>
+
+            <ul>
+                <li>Figma & UI/UX Design</li>
+                <li>Java Programming</li>
+                <li>Database</li>
+                <li>HTML5 & CSS3</li>
+            </ul>
+        </section>
+
+
+        <section id="portofolio">
+            <h2>Portofolio & Capaian</h2>
+
+            <article>
+                <h3>Project yang Pernah Dikerjakan</h3>
+
+                <p>
+                    Beberapa project yang pernah saya kerjakan meliputi
+                    perancangan aplikasi menggunakan Figma serta
+                    pengembangan sistem informasi menggunakan Java dan database.
+                </p>
+
+                <table>
+                    <caption>
+                        Daftar Project yang Pernah Dikerjakan
+                    </caption>
+
+                    <thead>
+                        <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Nama Project</th>
+                            <th scope="col">Teknologi / Tools</th>
+                            <th scope="col">Tahun</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Nusantara Connect</td>
+                            <td>Figma</td>
+                            <td>2026</td>
+                            <td>Selesai</td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Layanan Imunisasi Anak</td>
+                            <td>Figma</td>
+                            <td>2026</td>
+                            <td>Selesai</td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>
+                                Sistem Informasi Pendataan
+                                Penghuni Asrama
+                            </td>
+                            <td>Java & Database</td>
+                            <td>2026</td>
+                            <td>Selesai</td>
+                        </tr>
+                    </tbody>
+
+                    <tfoot>
+                        <tr>
+                            <th scope="row" colspan="4">Total Project</th>
+                            <td>3</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </article>
+        </section>
+
+
+        <section id="proses">
+            <h2>Proses Pengembangan Project</h2>
+
+            <ol>
+                <li>Memahami kebutuhan dan permasalahan.</li>
+                <li>Merancang struktur dan antarmuka sistem.</li>
+                <li>Mengembangkan project menggunakan teknologi yang sesuai.</li>
+                <li>Melakukan pengujian dan perbaikan.</li>
+                <li>Mempublikasikan hasil project.</li>
+            </ol>
+        </section>
+
+
+        <section id="layanan">
+            <h2>Layanan Konsultasi</h2>
+
+            <p>
+                Silakan isi formulir berikut jika ingin melakukan konsultasi
+                mengenai project web dan sistem informasi.
+            </p>
+
+            <form class="consultation-form" action="#" method="post">
+
+                <fieldset>
+                    <legend>Data Pemesan</legend>
+
+                    <div class="form-group">
+                        <label for="nama">
+                            Nama Lengkap <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nama"
+                            name="nama"
+                            required
+                            placeholder="Masukkan nama lengkap"
+                        >
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="email">
+                            Email <span>*</span>
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            placeholder="contoh@email.com"
+                            aria-describedby="email-help"
+                        >
+
+                        <small id="email-help">
+                            Gunakan alamat email yang masih aktif.
+                        </small>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="telepon">
+                            Nomor Telepon <span>*</span>
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="telepon"
+                            name="telepon"
+                            required
+                            placeholder="08xxxxxxxxxx"
+                        >
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="usia">Usia</label>
+
+                        <input
+                            type="number"
+                            id="usia"
+                            name="usia"
+                            min="15"
+                            max="100"
+                            placeholder="Masukkan usia"
+                        >
+                    </div>
+
+                </fieldset>
+
+
+                <fieldset>
+                    <legend>Detail Konsultasi</legend>
+
+                    <div class="form-group">
+                        <label for="kategori">
+                            Topik Konsultasi <span>*</span>
+                        </label>
+
+                        <select
+                            id="kategori"
+                            name="kategori"
+                            required
+                        >
+                            <option value="">
+                                -- Pilih Topik --
+                            </option>
+
+                            <option value="figma">
+                                Figma & UI/UX
+                            </option>
+
+                            <option value="web-development">
+                                Web Development
+                            </option>
+
+                            <option value="java">
+                                Java Programming
+                            </option>
+
+                            <option value="database">
+                                Database
+                            </option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <p class="form-label">
+                            Jenis Konsultasi <span>*</span>
+                        </p>
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="jenis_konsultasi"
+                                value="online"
+                                required
+                            >
+                            Online
+                        </label>
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="jenis_konsultasi"
+                                value="offline"
+                            >
+                            Offline
+                        </label>
+                    </div>
+
+
+                    <div class="form-group">
+                        <p class="form-label">
+                            Layanan Tambahan
+                        </p>
+
+                        <label>
+                            <input
+                                type="checkbox"
+                                name="layanan"
+                                value="review-code"
+                            >
+                            Review kode
+                        </label>
+
+                        <label>
+                            <input
+                                type="checkbox"
+                                name="layanan"
+                                value="ui-ux"
+                            >
+                            Review UI/UX
+                        </label>
+
+                        <label>
+                            <input
+                                type="checkbox"
+                                name="layanan"
+                                value="database"
+                            >
+                            Konsultasi database
+                        </label>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="pesan">
+                            Deskripsi Kebutuhan <span>*</span>
+                        </label>
+
+                        <textarea
+                            id="pesan"
+                            name="pesan"
+                            rows="5"
+                            required
+                            placeholder="Jelaskan kebutuhan konsultasi kamu..."
+                        ></textarea>
+                    </div>
+
+                </fieldset>
+
+
+                <button type="submit">
+                    Kirim Permintaan Konsultasi
+                </button>
+
+            </form>
+        </section>
+
+
+        <aside>
+            <h2>Informasi Tambahan</h2>
+
+            <p>
+                Website ini dibuat sebagai tugas praktikum
+                Pemrograman dan Pengujian Aplikasi Web.
+            </p>
+        </aside>
+
+    </main>
+
+
+    <footer>
+        <p>
+            &copy; 2026 Adryan Julianto Panjaitan.
+            All Rights Reserved.
+        </p>
+    </footer>
+
+</body>
+</html>
