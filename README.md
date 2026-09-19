@@ -1,4 +1,4 @@
-# Portfolio Adryan Julianto Panjaitan
+# Portofolio Adryan Julianto Panjaitan
 
 Tugas Mandiri Praktikum Minggu 02 - Mata Kuliah Pemrograman dan Pengujian Aplikasi Web (12S3101), Institut Teknologi Del.
 
