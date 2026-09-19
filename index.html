@@ -3,14 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portofolio Adryan Julianto Panjaitan, mahasiswa Sistem Informasi Institut Teknologi Del: project, keahlian, dan layanan konsultasi.">
+    <meta name="theme-color" content="#5c2233">
     <title>Portfolio Adryan Julianto Panjaitan</title>
+
+    <!-- Font: Plus Jakarta Sans (jika offline, otomatis memakai Segoe UI / Roboto / Arial) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+    <a class="skip-link" href="#konten-utama">Lewati ke konten utama</a>
+
     <header>
-        <nav>
+        <nav aria-label="Navigasi utama">
             <h1>Adryan Portfolio</h1>
             <ul>
                 <li><a href="#tentang">Tentang Saya</a></li>
@@ -20,36 +30,54 @@
         </nav>
     </header>
 
-    <main>
+    <main id="konten-utama" tabindex="-1">
 
-        <section id="tentang">
-            <h2>Tentang Saya</h2>
+        <section id="tentang" aria-labelledby="judul-tentang">
+            <h2 id="judul-tentang">Tentang Saya</h2>
 
-            <article>
-                <h3>Adryan Julianto Panjaitan</h3>
-                <p>
-                    Mahasiswa Sistem Informasi yang memiliki minat dalam
-                    pengembangan aplikasi, database, dan perancangan
-                    antarmuka pengguna.
-                </p>
+            <article class="profile">
+
+                <figure class="avatar">
+                    <img
+                        src="images/foto-profil.jpeg"
+                        alt="Foto profil Adryan Julianto Panjaitan"
+                        width="600"
+                        height="600"
+                    >
+                </figure>
+
+                <div class="profile-body">
+                    <h3>Adryan Julianto Panjaitan</h3>
+                    <p class="profile-role">Sistem Informasi, Institut Teknologi Del</p>
+                    <p class="profile-bio">
+                        Mahasiswa Sistem Informasi yang memiliki minat dalam
+                        pengembangan aplikasi, database, dan perancangan
+                        antarmuka pengguna.
+                    </p>
+
+                    <div class="profile-actions">
+                        <a class="btn btn-primary" href="#portofolio">Lihat Portofolio</a>
+                        <a class="btn btn-outline" href="#layanan">Konsultasi</a>
+                    </div>
+                </div>
             </article>
         </section>
 
 
-        <section id="keahlian">
-            <h2>Keahlian</h2>
+        <section id="keahlian" aria-labelledby="judul-keahlian">
+            <h2 id="judul-keahlian">Keahlian</h2>
 
-            <ul>
-                <li>Figma & UI/UX Design</li>
+            <ul role="list">
+                <li>Figma &amp; UI/UX Design</li>
                 <li>Java Programming</li>
                 <li>Database</li>
-                <li>HTML5 & CSS3</li>
+                <li>HTML5 &amp; CSS3</li>
             </ul>
         </section>
 
 
-        <section id="portofolio">
-            <h2>Portofolio & Capaian</h2>
+        <section id="portofolio" aria-labelledby="judul-portofolio">
+            <h2 id="judul-portofolio">Portofolio &amp; Capaian</h2>
 
             <article>
                 <h3>Project yang Pernah Dikerjakan</h3>
@@ -60,65 +88,76 @@
                     pengembangan sistem informasi menggunakan Java dan database.
                 </p>
 
-                <table>
-                    <caption>
-                        Daftar Project yang Pernah Dikerjakan
-                    </caption>
+                <p class="table-hint">
+                    Geser tabel ke samping untuk melihat seluruh kolom.
+                </p>
 
-                    <thead>
-                        <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">Nama Project</th>
-                            <th scope="col">Teknologi / Tools</th>
-                            <th scope="col">Tahun</th>
-                            <th scope="col">Status</th>
-                        </tr>
-                    </thead>
+                <div
+                    class="table-scroll"
+                    role="region"
+                    aria-label="Tabel daftar project, dapat digeser ke samping"
+                    tabindex="0"
+                >
+                    <table>
+                        <caption>
+                            Daftar Project yang Pernah Dikerjakan
+                        </caption>
 
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Nusantara Connect</td>
-                            <td>Figma</td>
-                            <td>2026</td>
-                            <td>Selesai</td>
-                        </tr>
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Nama Project</th>
+                                <th scope="col">Teknologi / Tools</th>
+                                <th scope="col">Tahun</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
 
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Layanan Imunisasi Anak</td>
-                            <td>Figma</td>
-                            <td>2026</td>
-                            <td>Selesai</td>
-                        </tr>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <th scope="row">Nusantara Connect</th>
+                                <td>Figma</td>
+                                <td>2026</td>
+                                <td><span class="badge">Selesai</span></td>
+                            </tr>
 
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>
-                                Sistem Informasi Pendataan
-                                Penghuni Asrama
-                            </td>
-                            <td>Java & Database</td>
-                            <td>2026</td>
-                            <td>Selesai</td>
-                        </tr>
-                    </tbody>
+                            <tr>
+                                <td>2</td>
+                                <th scope="row">Layanan Imunisasi Anak</th>
+                                <td>Figma</td>
+                                <td>2026</td>
+                                <td><span class="badge">Selesai</span></td>
+                            </tr>
 
-                    <tfoot>
-                        <tr>
-                            <th scope="row" colspan="4">Total Project</th>
-                            <td>3</td>
-                        </tr>
-                    </tfoot>
-                </table>
+                            <tr>
+                                <td>3</td>
+                                <th scope="row">
+                                    Sistem Informasi Pendataan
+                                    Penghuni Asrama
+                                </th>
+                                <td>Java &amp; Database</td>
+                                <td>2026</td>
+                                <td><span class="badge">Selesai</span></td>
+                            </tr>
+                        </tbody>
+
+                        <tfoot>
+                            <tr>
+                                <th scope="row" colspan="4">Total Project</th>
+                                <td>3</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
             </article>
         </section>
 
 
-        <section id="proses">
-            <h2>Proses Pengembangan Project</h2>
+        <section id="proses" aria-labelledby="judul-proses">
+            <h2 id="judul-proses">Proses Pengembangan Project</h2>
 
-            <ol>
+            <ol role="list">
                 <li>Memahami kebutuhan dan permasalahan.</li>
                 <li>Merancang struktur dan antarmuka sistem.</li>
                 <li>Mengembangkan project menggunakan teknologi yang sesuai.</li>
@@ -128,12 +167,15 @@
         </section>
 
 
-        <section id="layanan">
-            <h2>Layanan Konsultasi</h2>
+        <section id="layanan" aria-labelledby="judul-layanan">
+            <h2 id="judul-layanan">Layanan Konsultasi</h2>
 
             <p>
                 Silakan isi formulir berikut jika ingin melakukan konsultasi
                 mengenai project web dan sistem informasi.
+            </p>
+            <p class="form-note">
+                Kolom bertanda <span aria-hidden="true">*</span> wajib diisi.
             </p>
 
             <form class="consultation-form" action="#" method="post">
@@ -141,69 +183,79 @@
                 <fieldset>
                     <legend>Data Pemesan</legend>
 
-                    <div class="form-group">
-                        <label for="nama">
-                            Nama Lengkap <span>*</span>
-                        </label>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="nama">
+                                Nama Lengkap <span aria-hidden="true">*</span>
+                            </label>
 
-                        <input
-                            type="text"
-                            id="nama"
-                            name="nama"
-                            required
-                            placeholder="Masukkan nama lengkap"
-                        >
+                            <input
+                                type="text"
+                                id="nama"
+                                name="nama"
+                                required
+                                autocomplete="name"
+                                placeholder="Masukkan nama lengkap"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="email">
+                                Email <span aria-hidden="true">*</span>
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                required
+                                autocomplete="email"
+                                placeholder="contoh@email.com"
+                                aria-describedby="email-help"
+                            >
+
+                            <small class="form-help" id="email-help">
+                                Gunakan alamat email yang masih aktif.
+                            </small>
+                        </div>
                     </div>
 
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="telepon">
+                                Nomor Telepon <span aria-hidden="true">*</span>
+                            </label>
 
-                    <div class="form-group">
-                        <label for="email">
-                            Email <span>*</span>
-                        </label>
+                            <input
+                                type="tel"
+                                id="telepon"
+                                name="telepon"
+                                required
+                                autocomplete="tel"
+                                pattern="(\+62|62|0)8[0-9]{8,12}"
+                                title="Contoh: 081234567890"
+                                placeholder="08xxxxxxxxxx"
+                                aria-describedby="telepon-help"
+                            >
 
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            required
-                            placeholder="contoh@email.com"
-                            aria-describedby="email-help"
-                        >
+                            <small class="form-help" id="telepon-help">
+                                Contoh: 081234567890
+                            </small>
+                        </div>
 
-                        <small id="email-help">
-                            Gunakan alamat email yang masih aktif.
-                        </small>
+                        <div class="form-group">
+                            <label class="form-label" for="usia">Usia</label>
+
+                            <input
+                                type="number"
+                                id="usia"
+                                name="usia"
+                                min="15"
+                                max="100"
+                                placeholder="Masukkan usia"
+                            >
+                        </div>
                     </div>
-
-
-                    <div class="form-group">
-                        <label for="telepon">
-                            Nomor Telepon <span>*</span>
-                        </label>
-
-                        <input
-                            type="tel"
-                            id="telepon"
-                            name="telepon"
-                            required
-                            placeholder="08xxxxxxxxxx"
-                        >
-                    </div>
-
-
-                    <div class="form-group">
-                        <label for="usia">Usia</label>
-
-                        <input
-                            type="number"
-                            id="usia"
-                            name="usia"
-                            min="15"
-                            max="100"
-                            placeholder="Masukkan usia"
-                        >
-                    </div>
-
                 </fieldset>
 
 
@@ -211,8 +263,8 @@
                     <legend>Detail Konsultasi</legend>
 
                     <div class="form-group">
-                        <label for="kategori">
-                            Topik Konsultasi <span>*</span>
+                        <label class="form-label" for="kategori">
+                            Topik Konsultasi <span aria-hidden="true">*</span>
                         </label>
 
                         <select
@@ -225,7 +277,7 @@
                             </option>
 
                             <option value="figma">
-                                Figma & UI/UX
+                                Figma &amp; UI/UX
                             </option>
 
                             <option value="web-development">
@@ -243,69 +295,78 @@
                     </div>
 
 
-                    <div class="form-group">
-                        <p class="form-label">
-                            Jenis Konsultasi <span>*</span>
-                        </p>
+                    <div class="form-row form-row-choices">
+                        <fieldset class="choice-group">
+                            <legend>
+                                Jenis Konsultasi <span aria-hidden="true">*</span>
+                            </legend>
 
-                        <label>
-                            <input
-                                type="radio"
-                                name="jenis_konsultasi"
-                                value="online"
-                                required
-                            >
-                            Online
-                        </label>
+                            <div class="choice-list">
+                                <label class="choice" for="jenis-online">
+                                    <input
+                                        type="radio"
+                                        id="jenis-online"
+                                        name="jenis_konsultasi"
+                                        value="online"
+                                        required
+                                    >
+                                    Online
+                                </label>
 
-                        <label>
-                            <input
-                                type="radio"
-                                name="jenis_konsultasi"
-                                value="offline"
-                            >
-                            Offline
-                        </label>
+                                <label class="choice" for="jenis-offline">
+                                    <input
+                                        type="radio"
+                                        id="jenis-offline"
+                                        name="jenis_konsultasi"
+                                        value="offline"
+                                    >
+                                    Offline
+                                </label>
+                            </div>
+                        </fieldset>
+
+
+                        <fieldset class="choice-group">
+                            <legend>Layanan Tambahan</legend>
+
+                            <div class="choice-list">
+                                <label class="choice" for="layanan-review-code">
+                                    <input
+                                        type="checkbox"
+                                        id="layanan-review-code"
+                                        name="layanan"
+                                        value="review-code"
+                                    >
+                                    Review kode
+                                </label>
+
+                                <label class="choice" for="layanan-ui-ux">
+                                    <input
+                                        type="checkbox"
+                                        id="layanan-ui-ux"
+                                        name="layanan"
+                                        value="ui-ux"
+                                    >
+                                    Review UI/UX
+                                </label>
+
+                                <label class="choice" for="layanan-database">
+                                    <input
+                                        type="checkbox"
+                                        id="layanan-database"
+                                        name="layanan"
+                                        value="database"
+                                    >
+                                    Konsultasi database
+                                </label>
+                            </div>
+                        </fieldset>
                     </div>
 
 
                     <div class="form-group">
-                        <p class="form-label">
-                            Layanan Tambahan
-                        </p>
-
-                        <label>
-                            <input
-                                type="checkbox"
-                                name="layanan"
-                                value="review-code"
-                            >
-                            Review kode
-                        </label>
-
-                        <label>
-                            <input
-                                type="checkbox"
-                                name="layanan"
-                                value="ui-ux"
-                            >
-                            Review UI/UX
-                        </label>
-
-                        <label>
-                            <input
-                                type="checkbox"
-                                name="layanan"
-                                value="database"
-                            >
-                            Konsultasi database
-                        </label>
-                    </div>
-
-
-                    <div class="form-group">
-                        <label for="pesan">
-                            Deskripsi Kebutuhan <span>*</span>
+                        <label class="form-label" for="pesan">
+                            Deskripsi Kebutuhan <span aria-hidden="true">*</span>
                         </label>
 
                         <textarea
@@ -316,13 +377,14 @@
                             placeholder="Jelaskan kebutuhan konsultasi kamu..."
                         ></textarea>
                     </div>
-
                 </fieldset>
 
 
-                <button type="submit">
+                <button type="submit" class="btn btn-primary btn-block">
                     Kirim Permintaan Konsultasi
                 </button>
+
+                <p class="form-status" id="form-status" role="status"></p>
 
             </form>
         </section>
@@ -346,6 +408,22 @@
             All Rights Reserved.
         </p>
     </footer>
+
+    <script>
+        const formKonsultasi = document.querySelector(".consultation-form");
+        const pesanStatus = document.getElementById("form-status");
+
+        formKonsultasi.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const nama = formKonsultasi.elements["nama"].value.trim();
+            pesanStatus.textContent =
+                "Terima kasih, " + nama + ". Permintaan konsultasi kamu sudah diterima " +
+                "(mode demo: data tidak dikirim ke server).";
+
+            formKonsultasi.reset();
+        });
+    </script>
 
 </body>
 </html>
