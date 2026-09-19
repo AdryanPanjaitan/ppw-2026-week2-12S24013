@@ -2,7 +2,7 @@
 
 Tugas Mandiri Praktikum Minggu 02 - Mata Kuliah Pemrograman dan Pengujian Aplikasi Web (12S3101), Institut Teknologi Del.
 
-**Live demo:** https://AdryanPanjaitan.github.io/ppw-2026-week2-12S24013/
+**Live demo:** https://adryanpanjaitan.github.io/ppw-2026-week2-12S24013/
 
 ## Isi Halaman
 
@@ -36,15 +36,12 @@ Seluruh warna dikelola sebagai variabel CSS di bagian `:root` pada `style.css`.
 ## Struktur Folder
 
 ```
-ppw-2026-week2-12S24013/
+ppw-2026-week2-[NIM]/
 ├── index.html
 ├── style.css
 ├── README.md
 ├── images/
 │   └── foto-profil.jpg
-└── screenshots/
-    ├── desktop.png
-    └── mobile.png
 ```
 
 ## Cara Menjalankan
