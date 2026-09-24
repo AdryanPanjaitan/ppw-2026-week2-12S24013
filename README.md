@@ -4,16 +4,25 @@ Tugas Mandiri Praktikum Minggu 02 - Mata Kuliah Pemrograman dan Pengujian Aplika
 
 **Live demo:** https://adryanpanjaitan.github.io/ppw-2026-week2-12S24013/
 
+## Tampilan
+
+| Desktop | Mobile |
+| :---: | :---: |
+| ![Tampilan desktop](screenshots/desktop.png) | ![Tampilan mobile](screenshots/mobile.jpeg) |
+
 ## Isi Halaman
 
 - **Tentang Saya**: foto profil, nama, program studi, dan deskripsi singkat.
 - **Keahlian**: Figma & UI/UX Design, Java Programming, Database, HTML5 & CSS3.
-- **Portofolio & Capaian**: tabel daftar project (Nusantara Connect, Layanan Imunisasi Anak, Sistem Informasi Pendataan Penghuni Asrama).
-- **Proses Pengembangan Project**: lima langkah kerja dalam bentuk daftar berurutan.
+ **Portofolio & Capaian**: grid empat kartu project dengan detail berbasis Bootstrap Modal.
+ **Layanan Konsultasi**: formulir Bootstrap Floating Labels, input groups berikon, dan feedback validasi visual.
 - **Layanan Konsultasi**: formulir dengan validasi bawaan HTML5.
+| Bootstrap 5.3 | CDN Bootstrap 5.3.3, Bootstrap Icons, navbar sticky dengan collapse, grid responsif, dan modal detail project |
 
+| CSS modern | CSS eksternal (`style.css`), 12 variabel CSS pada `:root`, tipografi Plus Jakarta Sans, `border-radius`, `box-shadow`, Flexbox dan CSS Grid |
 ## Pemenuhan Spesifikasi Tugas
-
+| Formulir accessible | Floating Labels, input groups berikon, semua input punya `label for` eksplisit, atribut `required`, `pattern`, dan `autocomplete`, serta feedback validasi |
+Teknologi | HTML5, Bootstrap 5.3, Bootstrap Icons, CSS3 (Flexbox, Grid, variabel CSS), Git & GitHub Pages, Google Fonts (Plus Jakarta Sans).
 | Ketentuan | Penerapan |
 | --- | --- |
 | Struktur semantik HTML5 | `header`, `nav`, `main`, 5 `section`, `article`, `aside`, dan `footer`; tanpa pembungkus `div` yang tidak bermakna |
