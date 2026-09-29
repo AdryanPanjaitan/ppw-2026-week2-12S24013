@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Portofolio dan service portal Adryan Julianto Panjaitan.">
     <meta name="theme-color" content="#4a1b29">
     <title>Adryan Julianto Panjaitan | Portfolio &amp; Service Portal</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
@@ -13,23 +15,253 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/custom-style.css">
 </head>
+
 <body>
     <a class="skip-link" href="#konten-utama">Lewati ke konten utama</a>
-    <header><nav class="navbar navbar-expand-lg navbar-dark sticky-top" aria-label="Navigasi utama"><div class="container">
-        <a class="navbar-brand fw-bold" href="#tentang">Adryan Panjaitan<span>.</span></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigasiUtama" aria-controls="navigasiUtama" aria-expanded="false" aria-label="Buka navigasi"><span class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navigasiUtama"><ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3"><li class="nav-item"><a class="nav-link" href="#tentang">Tentang Saya</a></li><li class="nav-item"><a class="nav-link" href="#portofolio">Portofolio</a></li><li class="nav-item"><a class="nav-link" href="#layanan">Layanan</a></li><li class="nav-item"><a class="btn btn-light btn-sm px-3" href="#layanan">Hubungi Saya <span id="order-count" class="badge text-bg-danger d-none">0</span></a></li></ul></div>
-    </div></nav></header>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark sticky-top" aria-label="Navigasi utama">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="#tentang">
+                    Adryan Panjaitan<span>.</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigasiUtama"
+                    aria-controls="navigasiUtama" aria-expanded="false" aria-label="Buka navigasi">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navigasiUtama">
+                    <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+                        <li class="nav-item"><a class="nav-link" href="#tentang">Tentang Saya</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#portofolio">Portofolio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#layanan">Layanan</a></li>
+                        <li class="nav-item">
+                            <a class="btn btn-light btn-sm px-3" href="#layanan">
+                                Hubungi Saya <span id="order-count" class="badge text-bg-danger d-none">0</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
     <main id="konten-utama" tabindex="-1">
-        <section id="tentang" class="hero-section py-5" aria-labelledby="judul-tentang"><div class="container py-lg-4"><div class="row align-items-center g-5"><div class="col-lg-7 order-2 order-lg-1"><p id="profile-role" class="eyebrow mb-3">Memuat profil...</p><h1 id="judul-tentang" class="display-4 fw-bold"><span id="profile-headline">Memuat...</span></h1><p id="profile-bio" class="lead mt-4"></p><div class="d-flex flex-wrap gap-3 mt-4"><a class="btn btn-brand btn-lg" href="#portofolio">Lihat Portofolio <i class="bi bi-arrow-up-right ms-2" aria-hidden="true"></i></a><a class="btn btn-outline-brand btn-lg" href="#layanan">Mulai Konsultasi</a></div></div><div class="col-lg-5 order-1 order-lg-2 text-center"><figure class="profile-frame mx-auto mb-0"><img id="profile-photo" src="images/foto-profil.jpeg" alt="Foto profil" width="600" height="600"></figure></div></div></div></section>
-        <section id="keahlian" class="py-5" aria-labelledby="judul-keahlian"><div class="container py-lg-4"><div class="section-heading mb-4"><p class="eyebrow">Toolkit saya</p><h2 id="judul-keahlian" class="fw-bold"><span id="profile-name">Profil</span> membawa keahlian</h2></div><div id="skills-list" class="row row-cols-2 row-cols-md-4 g-3"></div></div></section>
-        <section id="portofolio" class="portfolio-section py-5" aria-labelledby="judul-portofolio"><div class="container py-lg-4"><div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4"><div class="section-heading"><p class="eyebrow">Selected work</p><h2 id="judul-portofolio" class="fw-bold mb-0">Project &amp; capaian</h2></div><span id="project-count" class="project-count">00 PROJECTS</span></div><div class="filter-bar mb-4" aria-label="Filter kategori project"><button class="btn btn-sm active" type="button" data-category="all">Semua</button><button class="btn btn-sm" type="button" data-category="UI/UX">UI/UX</button><button class="btn btn-sm" type="button" data-category="Development">Development</button></div><div id="project-state" class="state-message mb-3" role="status">Memuat project...</div><div id="projects-list" class="row row-cols-1 row-cols-md-2 g-4"></div></div></section>
-        <section id="proses" class="py-5" aria-labelledby="judul-proses"><div class="container py-lg-4"><div class="row g-5 align-items-start"><div class="col-lg-4 section-heading"><p class="eyebrow">Cara kerja</p><h2 id="judul-proses" class="fw-bold">Dari pertanyaan menuju solusi.</h2></div><div class="col-lg-8"><ol class="process-list"><li><span>01</span><div><h3>Memahami kebutuhan</h3><p>Memetakan permasalahan dan tujuan utama project.</p></div></li><li><span>02</span><div><h3>Merancang struktur</h3><p>Menyusun alur, data, dan antarmuka sistem.</p></div></li><li><span>03</span><div><h3>Mengembangkan &amp; menguji</h3><p>Membangun project dan memperbaikinya berdasarkan hasil pengujian.</p></div></li></ol></div></div></div></section>
-        <section id="layanan" class="service-section py-5" aria-labelledby="judul-layanan"><div class="container py-lg-4"><div class="section-heading mb-4"><p class="eyebrow">Service menu</p><h2 id="judul-layanan" class="fw-bold">Pilih bentuk kolaborasi.</h2><p>Paket layanan dimuat dari provider JSON agar konten mudah dirawat.</p></div><div id="services-state" class="state-message mb-3">Memuat layanan...</div><div id="services-list" class="row g-4"></div><div class="row justify-content-center mt-4"><div class="col-xl-9"><div class="section-heading mb-4"><p class="eyebrow">Let's collaborate</p><h2 class="fw-bold">Punya project dalam pikiran?</h2></div><form id="formKonsultasi" class="needs-validation" novalidate><div class="row g-3"><div class="col-md-6"><div class="input-group"><span class="input-group-text"><i class="bi bi-person" aria-hidden="true"></i></span><div class="form-floating flex-grow-1"><input type="text" class="form-control" id="nama" name="nama" placeholder="Nama lengkap" required autocomplete="name"><label for="nama">Nama lengkap *</label><div class="invalid-feedback">Nama wajib diisi.</div></div></div></div><div class="col-md-6"><div class="input-group"><span class="input-group-text"><i class="bi bi-envelope" aria-hidden="true"></i></span><div class="form-floating flex-grow-1"><input type="email" class="form-control" id="email" name="email" placeholder="Email" required autocomplete="email"><label for="email">Email *</label><div class="invalid-feedback">Masukkan email yang valid.</div></div></div></div><div class="col-md-6"><div class="input-group"><span class="input-group-text"><i class="bi bi-telephone" aria-hidden="true"></i></span><div class="form-floating flex-grow-1"><input type="tel" class="form-control" id="telepon" name="telepon" placeholder="Nomor telepon" pattern="(\+62|62|0)8[0-9]{8,12}" required autocomplete="tel"><label for="telepon">Nomor telepon *</label><div class="invalid-feedback">Gunakan nomor Indonesia yang valid.</div></div></div></div><div class="col-md-6"><div class="form-floating"><select class="form-select" id="kategori" name="kategori" required><option value="" selected disabled>Pilih layanan</option></select><label for="kategori">Layanan *</label><div class="invalid-feedback">Pilih layanan.</div></div></div><div class="col-12"><div class="form-floating"><textarea class="form-control" id="pesan" name="pesan" placeholder="Deskripsi kebutuhan" style="height:140px" required></textarea><label for="pesan">Deskripsi kebutuhan *</label><div class="invalid-feedback">Ceritakan kebutuhan project kamu.</div></div></div><div class="col-12 d-flex flex-wrap justify-content-between align-items-center gap-3 mt-3"><small class="text-secondary">* Kolom wajib diisi</small><button class="btn btn-brand btn-lg" type="submit"><span class="submit-label">Kirim permintaan</span> <i class="bi bi-send ms-2" aria-hidden="true"></i></button></div></div></form></div></div></div></section>
+        <section id="tentang" class="hero-section py-5" aria-labelledby="judul-tentang">
+            <div class="container py-lg-4">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-7 order-2 order-lg-1">
+                        <p id="profile-role" class="eyebrow mb-3">Memuat profil...</p>
+                        <h1 id="judul-tentang" class="display-4 fw-bold">
+                            <span id="profile-headline">Memuat...</span>
+                        </h1>
+                        <p id="profile-bio" class="lead mt-4"></p>
+                        <div class="d-flex flex-wrap gap-3 mt-4">
+                            <a class="btn btn-brand btn-lg" href="#portofolio">
+                                Lihat Portofolio
+                                <i class="bi bi-arrow-up-right ms-2" aria-hidden="true"></i>
+                            </a>
+                            <a class="btn btn-outline-brand btn-lg" href="#layanan">Mulai Konsultasi</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 order-1 order-lg-2 text-center">
+                        <figure class="profile-frame mx-auto mb-0">
+                            <img id="profile-photo" src="images/foto-profil.jpeg" alt="Foto profil" width="600" height="600">
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="keahlian" class="py-5" aria-labelledby="judul-keahlian">
+            <div class="container py-lg-4">
+                <div class="section-heading mb-4">
+                    <p class="eyebrow">Toolkit saya</p>
+                    <h2 id="judul-keahlian" class="fw-bold">
+                        <span id="profile-name">Profil</span> membawa keahlian
+                    </h2>
+                </div>
+                <div id="skills-list" class="row row-cols-2 row-cols-md-4 g-3"></div>
+            </div>
+        </section>
+
+        <section id="portofolio" class="portfolio-section py-5" aria-labelledby="judul-portofolio">
+            <div class="container py-lg-4">
+                <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+                    <div class="section-heading">
+                        <p class="eyebrow">Selected work</p>
+                        <h2 id="judul-portofolio" class="fw-bold mb-0">Project &amp; capaian</h2>
+                    </div>
+                    <span id="project-count" class="project-count">00 PROJECTS</span>
+                </div>
+                <div class="filter-bar mb-4" aria-label="Filter kategori project">
+                    <button class="btn btn-sm active" type="button" data-category="all">Semua</button>
+                    <button class="btn btn-sm" type="button" data-category="UI/UX">UI/UX</button>
+                    <button class="btn btn-sm" type="button" data-category="Development">Development</button>
+                </div>
+                <div id="project-state" class="state-message mb-3" role="status">Memuat project...</div>
+                <div id="projects-list" class="row row-cols-1 row-cols-md-2 g-4"></div>
+            </div>
+        </section>
+
+        <section id="proses" class="py-5" aria-labelledby="judul-proses">
+            <div class="container py-lg-4">
+                <div class="row g-5 align-items-start">
+                    <div class="col-lg-4 section-heading">
+                        <p class="eyebrow">Cara kerja</p>
+                        <h2 id="judul-proses" class="fw-bold">Dari pertanyaan menuju solusi.</h2>
+                    </div>
+                    <div class="col-lg-8">
+                        <ol class="process-list">
+                            <li>
+                                <span>01</span>
+                                <div>
+                                    <h3>Memahami kebutuhan</h3>
+                                    <p>Memetakan permasalahan dan tujuan utama project.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span>02</span>
+                                <div>
+                                    <h3>Merancang struktur</h3>
+                                    <p>Menyusun alur, data, dan antarmuka sistem.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span>03</span>
+                                <div>
+                                    <h3>Mengembangkan &amp; menguji</h3>
+                                    <p>Membangun project dan memperbaikinya berdasarkan hasil pengujian.</p>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="layanan" class="service-section py-5" aria-labelledby="judul-layanan">
+            <div class="container py-lg-4">
+                <div class="section-heading mb-4">
+                    <p class="eyebrow">Service menu</p>
+                    <h2 id="judul-layanan" class="fw-bold">Pilih bentuk kolaborasi.</h2>
+                    <p>Paket layanan dimuat dari provider JSON agar konten mudah dirawat.</p>
+                </div>
+                <div id="services-state" class="state-message mb-3">Memuat layanan...</div>
+                <div id="services-list" class="row g-4"></div>
+
+                <div class="row justify-content-center mt-4">
+                    <div class="col-xl-9">
+                        <div class="section-heading mb-4">
+                            <p class="eyebrow">Let's collaborate</p>
+                            <h2 class="fw-bold">Punya project dalam pikiran?</h2>
+                        </div>
+                        <form id="formKonsultasi" class="needs-validation" novalidate>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="bi bi-person" aria-hidden="true"></i>
+                                        </span>
+                                        <div class="form-floating flex-grow-1">
+                                            <input type="text" class="form-control" id="nama" name="nama"
+                                                placeholder="Nama lengkap" required autocomplete="name">
+                                            <label for="nama">Nama lengkap *</label>
+                                            <div class="invalid-feedback">Nama wajib diisi.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="bi bi-envelope" aria-hidden="true"></i>
+                                        </span>
+                                        <div class="form-floating flex-grow-1">
+                                            <input type="email" class="form-control" id="email" name="email"
+                                                placeholder="Email" required autocomplete="email">
+                                            <label for="email">Email *</label>
+                                            <div class="invalid-feedback">Masukkan email yang valid.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="bi bi-telephone" aria-hidden="true"></i>
+                                        </span>
+                                        <div class="form-floating flex-grow-1">
+                                            <input type="tel" class="form-control" id="telepon" name="telepon"
+                                                placeholder="Nomor telepon" pattern="(\+62|62|0)8[0-9]{8,12}" required
+                                                autocomplete="tel">
+                                            <label for="telepon">Nomor telepon *</label>
+                                            <div class="invalid-feedback">Gunakan nomor Indonesia yang valid.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="kategori" name="kategori" required>
+                                            <option value="" selected disabled>Pilih layanan</option>
+                                        </select>
+                                        <label for="kategori">Layanan *</label>
+                                        <div class="invalid-feedback">Pilih layanan.</div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" id="pesan" name="pesan"
+                                            placeholder="Deskripsi kebutuhan" style="height:140px" required></textarea>
+                                        <label for="pesan">Deskripsi kebutuhan *</label>
+                                        <div class="invalid-feedback">Ceritakan kebutuhan project kamu.</div>
+                                    </div>
+                                </div>
+                                <div class="col-12 d-flex flex-wrap justify-content-between align-items-center gap-3 mt-3">
+                                    <small class="text-secondary">* Kolom wajib diisi</small>
+                                    <button class="btn btn-brand btn-lg" type="submit">
+                                        <span class="submit-label">Kirim permintaan</span>
+                                        <i class="bi bi-send ms-2" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
-    <footer class="py-4"><div class="container d-flex flex-wrap justify-content-between gap-3"><span>© 2026 Adryan Julianto Panjaitan.</span><span>Pemrograman dan Pengujian Aplikasi Web</span></div></footer>
-    <div class="modal fade" id="project-modal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><div><h2 class="modal-title fs-5" id="modal-title"></h2><span id="modal-category" class="eyebrow"></span></div><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button></div><div class="modal-body"><p id="modal-description"></p><p id="modal-metric" class="fw-bold"></p><div id="modal-tags"></div></div></div></div></div>
-    <div id="order-toast" class="toast position-fixed bottom-0 end-0 m-3" role="status" aria-live="polite"><div class="toast-body" id="toast-message"></div></div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script><script type="module" src="js/app.js"></script>
+
+    <footer class="py-4">
+        <div class="container d-flex flex-wrap justify-content-between gap-3">
+            <span>© 2026 Adryan Julianto Panjaitan.</span>
+            <span>Pemrograman dan Pengujian Aplikasi Web</span>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="project-modal" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <h2 class="modal-title fs-5" id="modal-title"></h2>
+                        <span id="modal-category" class="eyebrow"></span>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="modal-description"></p>
+                    <p id="modal-metric" class="fw-bold"></p>
+                    <div id="modal-tags"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="order-toast" class="toast position-fixed bottom-0 end-0 m-3" role="status" aria-live="polite">
+        <div class="toast-body" id="toast-message"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <script type="module" src="js/app.js"></script>
 </body>
+
 </html>
