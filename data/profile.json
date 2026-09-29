@@ -1,0 +1,15 @@
+{
+  "name": "Adryan Julianto Panjaitan",
+  "role": "Mahasiswa Sistem Informasi",
+  "institution": "Institut Teknologi Del",
+  "headline": "Membangun ide menjadi pengalaman digital yang bermakna.",
+  "bio": "Saya berfokus pada pengembangan aplikasi, database, dan perancangan antarmuka pengguna.",
+  "photo": "images/foto-profil.jpeg",
+  "photoAlt": "Foto profil Adryan Julianto Panjaitan",
+  "skills": [
+    { "label": "Figma & UI/UX", "icon": "bi-bezier2" },
+    { "label": "Java Programming", "icon": "bi-code-slash" },
+    { "label": "Database", "icon": "bi-database" },
+    { "label": "HTML & CSS", "icon": "bi-window-stack" }
+  ]
+}

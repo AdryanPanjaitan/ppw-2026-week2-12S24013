@@ -1,0 +1,5 @@
+[
+  { "id": "ui-ux", "name": "UI/UX Starter", "description": "Fondasi alur pengguna dan tampilan awal untuk ide digital.", "price": "Mulai dari Rp350.000", "features": ["User flow", "Wireframe", "1 kali revisi"], "duration": "3-5 hari", "icon": "bi-bezier2" },
+  { "id": "web-development", "name": "Web Development", "description": "Landing page responsif dengan struktur yang rapi dan mudah dirawat.", "price": "Mulai dari Rp750.000", "features": ["HTML, CSS, Bootstrap", "Responsive layout", "Optimasi dasar"], "duration": "5-7 hari", "icon": "bi-window-stack" },
+  { "id": "database", "name": "Database & Java", "description": "Pendampingan rancangan database dan aplikasi Java untuk kebutuhan akademik.", "price": "Mulai dari Rp500.000", "features": ["Entity relationship", "Query dasar", "Review struktur"], "duration": "3-6 hari", "icon": "bi-database" }
+]
