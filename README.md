@@ -1,146 +1,237 @@
-# Personal Portfolio & Service Portal 
-**Live demo:** isi setelah GitHub Pages aktif: 'https://adryanpanjaitan.github.io/ppw-2026-week2-12S24013/'
+# Personal Portfolio & Service Portal
+
+**Nama:** Adryan Julianto Panjaitan  
+**NIM:** 12S24013  
+**Mata Kuliah:** Pemrograman dan Pengujian Aplikasi Web  
+**Tugas:** Minggu 4 — Refactoring Arsitektural  
+
+**Live demo:** [https://adryanpanjaitan.github.io/ppw-2026-week2-12S24013/](https://adryanpanjaitan.github.io/ppw-2026-week2-12S24013/)
+
+---
 
 ## Deskripsi
 
-Website menampilkan profil mahasiswa, empat project portfolio, tiga paket layanan, filter kategori, modal detail universal, dan formulir konsultasi asynchronous. HTML hanya menjadi shell; konten profil, project, dan layanan dibaca dari file JSON menggunakan Fetch API.
+Website portofolio dan service portal yang menampilkan profil mahasiswa, empat project portfolio, tiga paket layanan, filter kategori, modal detail universal, dan formulir konsultasi asinkron. Arsitektur mengikuti prinsip **Decoupled Multi-Tier**:
 
-## C4 Container Diagram
+- **Presentation Tier** — `index.html` sebagai shell semantik (tidak ada data hardcoded)
+- **Application/API Logic Tier** — `app.js` dan `api-service.js` mengelola state, rendering, dan data fetching
+- **Data Provider Tier** — File JSON modular di direktori `/data/`
+
+Seluruh konten profil, project, dan layanan dibaca secara asinkron dari file JSON menggunakan **Fetch API** dan **async/await**.
+
+---
+
+## Diagram Arsitektur C4 (Container Level)
 
 ```mermaid
 C4Container
-    title Week 4 - Personal Portfolio & Service Portal
-    Person(visitor, "Visitor", "Melihat portfolio dan mengirim permintaan layanan")
-    System_Boundary(portal, "Portfolio Service Portal") {
-        Container(browser, "Client / Browser", "HTML, Bootstrap 5.3, ES Modules", "Presentation tier dan dynamic CSR")
-        Container(logic, "Application / API Logic", "app.js dan api-service.js", "Fetch, filter, modal, form DTO, UI state")
-        ContainerDb(provider, "JSON Providers", "profile.json, projects.json, services.json", "Sumber data modular")
-        ContainerDb(storage, "localStorage", "Web Storage API", "Riwayat order layanan")
-        Container(mock, "REST API / Mock API Layer", "Static JSON response", "Simulasi penerimaan POST")
+    title Arsitektur C4 — Personal Portfolio & Service Portal (Week 4)
+
+    Person(visitor, "Visitor / Pengguna", "Mengakses portfolio, melihat project, dan mengirim permintaan layanan")
+
+    System_Boundary(portal, "Portfolio & Service Portal") {
+        Container(browser, "Client / Browser", "HTML5, Bootstrap 5.3, ES Modules", "Presentation tier: shell semantik dan dynamic CSR")
+        Container(logic, "Application Logic", "app.js + api-service.js", "State management, rendering, filter, modal, form DTO, UI state machine")
+        ContainerDb(provider, "JSON Data Providers", "profile.json, projects.json, services.json", "Sumber data modular dan terstruktur")
+        ContainerDb(storage, "localStorage", "Web Storage API", "Persistensi riwayat order pada browser")
+        Container(mock, "Mock REST API", "order-response.json", "Simulasi endpoint POST untuk penerimaan order")
     }
-    System_Ext(server, "Static Server", "Live Server atau GitHub Pages")
-    System_Ext(cdn, "CDN", "Bootstrap, Icons, Google Fonts")
-    Rel(visitor, browser, "Menggunakan website")
-    Rel(browser, server, "Meminta HTML, CSS, JS")
-    Rel(browser, cdn, "Memuat library")
-    Rel(browser, logic, "Menjalankan ES module")
-    Rel(logic, provider, "Fetch GET JSON")
-    Rel(logic, mock, "Fetch POST order DTO")
-    Rel(logic, storage, "Simpan dan baca order")
+
+    System_Ext(server, "Static Server", "GitHub Pages / Live Server")
+    System_Ext(cdn, "CDN Providers", "jsDelivr: Bootstrap CSS + JS, Bootstrap Icons; Google Fonts: Plus Jakarta Sans")
+
+    Rel(visitor, browser, "Menggunakan website", "HTTPS")
+    Rel(browser, server, "Meminta HTML, CSS, JS", "HTTP GET")
+    Rel(browser, cdn, "Memuat library & font", "HTTP GET")
+    Rel(browser, logic, "Menjalankan ES Module")
+    Rel(logic, provider, "Fetch GET JSON", "async/await")
+    Rel(logic, mock, "Fetch POST order DTO", "async/await")
+    Rel(logic, storage, "Simpan & baca order", "localStorage API")
 ```
 
-## Separation of Concerns
+---
 
-- **Presentation tier:** `index.html` menyediakan struktur semantik, target DOM, form, satu modal universal, toast, dan layout Bootstrap.
-- **Application/API logic tier:** `js/app.js` mengatur state, rendering, filter, modal, validasi, FormData, localStorage, dan feedback. `js/api-service.js` menjadi pintu asynchronous Fetch.
-- **Data provider/storage tier:** `data/*.json` menyimpan konten modular. `localStorage` menyimpan order pada browser. `order-response.json` menjadi response mock untuk simulasi REST statis.
+## Narasi Separation of Concerns
+
+Arsitektur aplikasi ini menerapkan prinsip **Separation of Concerns (SoC)** secara ketat dengan pemisahan tiga tier:
+
+### 1. Presentation Tier (`index.html` + `css/custom-style.css`)
+- `index.html` hanya menyediakan struktur semantik HTML5, target DOM (container kosong), satu modal universal, toast notification, dan layout Bootstrap.
+- Tidak ada data konten yang hardcoded di HTML; semua diisi secara dinamis oleh JavaScript.
+- CSS menangani seluruh aspek visual termasuk animasi loading (spinner & skeleton).
+
+### 2. Application / API Logic Tier (`js/app.js` + `js/api-service.js`)
+- `api-service.js` berperan sebagai **data access layer** yang mengisolasi semua operasi Fetch API. Module ini menyediakan fungsi `getProfile()`, `getProjects()`, `getServices()`, dan `postOrder()` dengan error handling dan timeout.
+- `app.js` berperan sebagai **application controller** yang mengelola: state aplikasi, rendering DOM dinamis, filter kategori, modal universal, validasi form, FormData → JSON DTO, localStorage persistence, dan UI state machine (loading → success/empty/error).
+
+### 3. Data Provider / Storage Tier (`data/*.json` + `localStorage`)
+- `profile.json` — Data profil mahasiswa (nama, role, bio, foto, skills).
+- `projects.json` — Data 4 project portfolio (id, title, description, category, metrics, tags, thumbnail, link, details).
+- `services.json` — Data 3 paket layanan (id, name, description, price, features, duration).
+- `order-response.json` — Mock response untuk simulasi REST POST.
+- `localStorage` — Menyimpan riwayat order yang persisten di browser pengguna.
+
+---
 
 ## Struktur Folder
 
 ```text
-ppw-2026-week4-[NIM]/
-├── index.html
+ppw-2026-week2-12S24013/
+├── index.html              # Shell HTML semantik (tidak ada data hardcoded)
 ├── css/
-│   └── custom-style.css
+│   └── custom-style.css    # Design system + animasi (spinner, skeleton, transitions)
 ├── data/
-│   ├── profile.json
-│   ├── projects.json
-│   ├── services.json
-│   └── order-response.json
+│   ├── profile.json        # Data profil mahasiswa
+│   ├── projects.json       # Data 4 project portfolio
+│   ├── services.json       # Data 3 paket layanan
+│   └── order-response.json # Mock REST response
 ├── js/
-│   ├── api-service.js
-│   └── app.js
+│   ├── api-service.js      # Data access layer (Fetch API + async/await)
+│   └── app.js              # Application controller (state, render, filter, modal, form)
 ├── images/
-│   └── foto-profil.jpeg
-├── screenshots/
+│   └── foto-profil.jpeg    # Foto profil
+├── screenshots/            # Screenshot DevTools & UI states
 └── README.md
 ```
 
-## Perbandingan Week 3 dan Week 4
+---
 
-| Area | Week 3 | Week 4 |
-| --- | --- | --- |
-| Project | Kartu dan detail hardcoded di HTML | `projects.json` dirender dinamis |
-| Layanan | Belum memiliki provider layanan | `services.json` mengisi kartu dan select form |
-| Modal | Modal terpisah per project | Satu modal universal berdasarkan `data-project-id` |
-| Form | Validasi dan pesan lokal | FormData -> DTO JSON -> Fetch POST -> Toast -> localStorage -> badge |
-| Arsitektur | HTML-centric | Presentation, logic/API, data provider terpisah |
+## Tabel Perbandingan: Sebelum vs Sesudah Refactoring
 
-## Dynamic CSR dan UI State
+| Area | Week 3 (Sebelum) | Week 4 (Sesudah) |
+|------|-------------------|-------------------|
+| **Data Project** | Kartu dan detail hardcoded di HTML | `projects.json` → dirender dinamis via DOM API |
+| **Data Layanan** | Kartu hardcoded di HTML | `services.json` → dirender dinamis + mengisi `<select>` form |
+| **Data Profil** | Hardcoded di HTML | `profile.json` → dirender dinamis (nama, role, bio, foto, skills) |
+| **Modal** | Modal terpisah per project (duplikasi HTML) | 1 modal universal, data diinjeksi berdasarkan `data-project-id` |
+| **Form** | Validasi lokal, page reload | `FormData` → JSON DTO → Fetch POST → Toast → localStorage → badge |
+| **UI States** | Tidak ada state management | 4 state: Loading (spinner/skeleton), Success, Empty, Error |
+| **Arsitektur** | Monolitik HTML-centric | Decoupled 3-tier: Presentation, Logic/API, Data Provider |
+| **Error Handling** | Tidak ada | Fetch timeout, try/catch, error state visual, toast feedback |
+| **XSS Prevention** | Tidak dipertimbangkan | `textContent` digunakan konsisten, tidak ada `innerHTML` untuk data |
 
-`app.js` memanggil `getProfile()`, `getProjects()`, dan `getServices()` dengan `Promise.all`, `fetch()`, serta `async/await`. Kartu dibuat menggunakan DOM API setelah response diterima. Filter kategori mengubah state dan merender ulang tanpa reload.
+---
 
-Empat kondisi UI yang tersedia:
+## Dynamic CSR dan UI State Machine
 
-1. **Loading:** pesan `Memuat project...` dan `Memuat layanan...`.
-2. **Success:** data berhasil menjadi kartu profile, project, dan service.
-3. **Empty:** filter yang tidak menghasilkan data menampilkan pesan empty state.
-4. **Error:** kegagalan provider menampilkan feedback error yang jelas.
+`app.js` menginisialisasi aplikasi dengan memanggil `getProfile()`, `getProjects()`, dan `getServices()` secara paralel menggunakan `Promise.all` dan `async/await`. Data dirender ke DOM menggunakan DOM API setelah response diterima.
 
-Jalankan melalui Live Server atau static server karena Fetch tidak dapat diandalkan dari `file://`.
+### 4 UI States yang Dikelola:
+
+| State | Kondisi | Tampilan |
+|-------|---------|----------|
+| **Loading** | Fetch sedang berjalan | Spinner animasi + skeleton cards |
+| **Success** | Data berhasil dimuat | Kartu profil, project, dan service terender |
+| **Empty** | Filter tidak menghasilkan data | Pesan "Belum ada project pada kategori ini." |
+| **Error** | Fetch gagal / timeout | Alert error dengan pesan deskriptif |
+
+Filter kategori mengubah `state.category` dan merender ulang project cards tanpa reload halaman.
+
+---
 
 ## Universal Dynamic Modal
 
-HTML memiliki tepat satu `#project-modal`. Tombol detail membawa `data-project-id`. Event delegation mencari project yang sesuai, mengisi judul, kategori, deskripsi, metric, dan tags, kemudian membuka modal melalui Bootstrap Modal API. Data dinamis dimasukkan memakai `textContent` untuk mengurangi risiko XSS.
+HTML memiliki tepat **1 elemen modal** (`#project-modal`). Tombol detail pada setiap kartu membawa atribut `data-project-id`. Event delegation pada container `#projects-list` menangkap klik, mencari project yang sesuai dari state, dan menginjeksi:
 
-## Asynchronous Form dan localStorage
+- **Judul** (`textContent`)
+- **Kategori** (`textContent`)
+- **Deskripsi** (`textContent`)
+- **Metric** (`textContent`)
+- **Image/Thumbnail** (`src` attribute)
+- **Link** (`href` attribute)
+- **Tags** (dibuat via DOM API dengan `textContent`)
 
-Submit form memakai `preventDefault()`, `FormData`, `Object.fromEntries()`, dan payload JSON. Tombol submit dinonaktifkan selama request. `api-service.js` menjalankan Fetch POST ke `data/order-response.json` sebagai mock REST layer; fallback memungkinkan simulasi tetap berjalan di static hosting tanpa backend sungguhan. Setelah berhasil, order disimpan di key `week4-service-orders`, toast ditampilkan, dan badge diperbarui. Saat refresh, badge membaca ulang localStorage.
+Semua data dimasukkan menggunakan `textContent` (bukan `innerHTML`) untuk **mencegah serangan XSS**. Modal dibuka melalui `bootstrap.Modal.getOrCreateInstance().show()`.
+
+---
+
+## Asynchronous Form & localStorage
+
+1. Form submission menggunakan `preventDefault()` — **tidak ada page reload**.
+2. `FormData` dikonversi ke plain object via `Object.fromEntries()`.
+3. Payload JSON (DTO) dikirim via `fetch()` HTTP POST ke mock endpoint.
+4. Tombol submit menampilkan **status loading** (spinner + teks "Mengirim...").
+5. Setelah berhasil:
+   - Order disimpan ke `localStorage` (key: `week4-service-orders`).
+   - **Toast notification** ditampilkan via Bootstrap Toast API.
+   - **Badge** di navbar diperbarui dengan jumlah order.
+6. Saat error: Toast merah dengan pesan error.
+7. Saat refresh halaman: badge membaca ulang dari `localStorage` (data persisten).
+
+---
 
 ## Pengujian Manual
 
 1. Jalankan Live Server dari root proyek.
-2. Pastikan loading berubah menjadi success dan tampil 4 project serta 3 layanan.
-3. Klik filter `UI/UX` dan `Development`; uji empty state dengan kategori sementara yang tidak memiliki data.
-4. Buka detail project berbeda dan pastikan yang dipakai tetap modal universal.
-5. Ubah nama file JSON sementara untuk memeriksa error state, lalu kembalikan namanya.
-6. Submit form kosong dan tidak valid; pastikan validasi tampil tanpa reload.
-7. Submit data valid; pastikan tombol menjadi `Mengirim...`, toast muncul, badge bertambah, dan data ada di localStorage.
-8. Refresh halaman dan pastikan jumlah order tetap ada.
-9. Uji desktop/mobile dan pastikan Console tidak berisi error.
+2. Pastikan loading spinner & skeleton muncul sebelum data terender.
+3. Pastikan 4 project dan 3 layanan tampil setelah loading.
+4. Klik filter `UI/UX` dan `Development`; pastikan filter berfungsi instan.
+5. Pilih kategori yang tidak memiliki data → pastikan empty state muncul.
+6. Klik detail project berbeda → pastikan modal universal menampilkan data yang benar.
+7. Ubah nama file JSON sementara → pastikan error state tampil, lalu kembalikan.
+8. Submit form kosong → pastikan validasi tampil tanpa reload.
+9. Submit data valid → pastikan spinner di tombol, toast muncul, badge bertambah.
+10. Refresh halaman → pastikan badge order tetap ada (persisten dari localStorage).
+11. Uji desktop dan mobile → pastikan Console tidak ada error.
 
-## Profiling Chrome DevTools
+---
 
-Angka harus diambil sendiri dari browser, bukan dibuat. Isi tabel berikut dengan hasil aktual.
+## Profiling Chrome DevTools (Network Performance)
 
-| Skenario | TTFB | FCP | Cache/status | Waterfall dan catatan |
-| --- | ---: | ---: | --- | --- |
-| Cold load | ____ ms | ____ ms | `200`, transfer ____ KB | ____ |
-| Warm load | ____ ms | ____ ms | `304`/memory cache/actual: ____ | ____ |
+> **Catatan:** Angka di bawah harus diisi dengan hasil aktual dari browser Anda.
 
-Cara pengukuran:
+| Skenario | TTFB | FCP | Cache / Status | Catatan Waterfall |
+|----------|-----:|----:|----------------|-------------------|
+| **Cold Load** | ____ ms | ____ ms | `200`, transfer ____ KB | Urutan: HTML → CSS (CDN) → JS → JSON (paralel) |
+| **Warm Load** | ____ ms | ____ ms | `304` / memory cache | Aset dari cache, transfer minimal |
 
-1. Buka DevTools `F12`, tab **Network**, centang **Disable cache**, pilih **Empty cache and hard reload** untuk cold load.
-2. Klik request `index.html`, lihat **Timing** untuk TTFB. Catat juga request JSON dan urutan waterfall.
-3. Buka tab **Performance**, reload, dan catat marker First Contentful Paint.
-4. Untuk warm load, uncheck **Disable cache** lalu reload normal dan bandingkan transfer serta durasi.
-5. Untuk `304 Not Modified`, catat hanya bila server aktual mengembalikan status `304`. Jika server lokal memberi status lain, tulis status sebenarnya.
+### Cara Mengukur:
 
-Screenshot yang perlu dikumpulkan:
+1. Buka **DevTools** (`F12`), tab **Network**, centang **Disable cache**.
+2. Pilih **Empty cache and hard reload** (`Ctrl+Shift+R`) untuk cold load.
+3. Klik request `index.html`, lihat **Timing** untuk TTFB.
+4. Buka tab **Performance**, reload, dan catat marker **First Contentful Paint**.
+5. Untuk warm load: uncheck **Disable cache**, reload normal, bandingkan transfer.
+6. Perhatikan status `304 Not Modified` pada warm load.
 
-- Network cold load dengan request HTML, CSS, JS, JSON, dan waterfall.
-- Network warm load dengan cache/status aktual.
-- Timing `index.html` untuk TTFB.
-- Performance timeline untuk FCP.
-- UI success, empty, error, modal universal, toast, dan badge localStorage.
+### Screenshot yang Perlu Dikumpulkan:
 
-## Foto Profil
+- [ ] Network waterfall cold load (HTML, CSS, JS, JSON)
+- [ ] Network warm load dengan cache status
+- [ ] Timing `index.html` (TTFB)
+- [ ] Performance timeline (FCP)
+- [ ] UI State: Loading (spinner/skeleton)
+- [ ] UI State: Success (cards terender)
+- [ ] UI State: Empty (filter kosong)
+- [ ] UI State: Error (JSON tidak ditemukan)
+- [ ] Modal universal dengan data dinamis
+- [ ] Toast notification & badge localStorage
 
-Foto berada di `images/foto-profil.jpeg`. Path digunakan oleh `#profile-photo` dan nilai `photo` pada `data/profile.json`. Untuk mengganti foto, timpa file tersebut atau ubah nilai `photo` di `profile.json`.
+---
 
-## Git dan GitHub Pages
-
-Jalankan setelah Git tersedia dan remote sudah dikonfigurasi:
+## Git & GitHub Pages
 
 ```bash
 git checkout -b week4-architecture
-git add index.html css/custom-style.css data js README.md images
+git add .
 git commit -m "feat(week4): decouple architecture to json data providers and async CSR"
 git push -u origin week4-architecture
 ```
 
-Di GitHub, buka **Settings > Pages**, pilih **Deploy from a branch**, branch `week4-architecture`, folder `/ (root)`, lalu simpan. Setelah URL aktif, masukkan URL aktual pada bagian Live demo.
+Di GitHub: **Settings → Pages → Deploy from branch → `week4-architecture` → `/ (root)` → Save.**
+
+---
 
 ## Teknologi
 
-HTML5, Bootstrap 5.3, Bootstrap Icons, CSS3, JavaScript ES Modules, Fetch API, async/await, JSON, localStorage, Git, dan GitHub Pages.
+| Teknologi | Kegunaan |
+|-----------|----------|
+| HTML5 | Struktur semantik |
+| CSS3 | Styling, animasi (spinner, skeleton, transitions) |
+| Bootstrap 5.3 | Layout responsive, komponen UI |
+| Bootstrap Icons | Ikonografi |
+| JavaScript ES Modules | Modularitas kode |
+| Fetch API + async/await | Data fetching asinkron |
+| JSON | Format data provider |
+| localStorage | Persistensi order di browser |
+| Git + GitHub Pages | Version control & deployment |
